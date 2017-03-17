@@ -57,7 +57,7 @@ class Answer(models.Model):
 
     name = models.CharField('答案', max_length=512)
     correct = models.BooleanField('正确答案', help_text='勾选为正确答案')
-    question = models.ForeignKey('Question', verbose_name='问题')
+    question = models.ForeignKey('Question', verbose_name='问题', related_name="answers")
     def __str__(self):
         return "{} - {}".format('答案', self.id)
     class Meta:

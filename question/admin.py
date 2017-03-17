@@ -10,14 +10,23 @@ from .models import Category,Question,Answer
 class CategoryAdmin(admin.ModelAdmin):
     search_fields = ('name', 'id')
 
+
+class AnswerInline(admin.TabularInline):
+    model = Answer
+    min_num = 4
+    extra = 0
+    can_delete = True
+
 class QuestionAdmin(admin.ModelAdmin):
     search_fields = ('name', 'id')
     list_display = ('name', 'id')
 
-class AnswerAdmin(admin.ModelAdmin):
-    search_fields = ('name', 'id')
+    inlines = [AnswerInline,]
+
+# class AnswerAdmin(admin.ModelAdmin):
+#     search_fields = ('name', 'id')
 
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Question, QuestionAdmin)
-admin.site.register(Answer, AnswerAdmin)
+# admin.site.register(Answer, AnswerAdmin)
