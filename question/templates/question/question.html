@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for question in questions %}
+        <div>{{ question.name }}</div>
+        <a href="{% url 'answer' question.id %}">{{ question.name }}</a>
+        {% for answer in answers %}
+            <div>{{ answer.name }}</div>
+        {% endfor %}
+
+    {% endfor %}
+
+</body>
+</html>
